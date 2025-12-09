@@ -1,12 +1,19 @@
-import { Button } from "@mui/material";
-import "./App.css";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ColorModeContext, useMode } from "./theme";
 
 function App() {
   // const [count, setCount] = useState(0)
+  const [theme, colorMode] = useMode();
 
   return (
     <>
-      <Button variant="contained">MUI working</Button>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <div className="app">
+            <main className="content"></main>
+          </div>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
     </>
   );
 }
